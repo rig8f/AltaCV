@@ -1,7 +1,8 @@
 %%%%%%%%%%%%%%%%%
-% This is altacv.cls (v1.1.4, 27 July 2018) written by
-% LianTze Lim (liantze@gmail.com).
-%
+%% altercv.cls (v1.0.0, 16 August 2018) 
+%% Copyright 2018 Filippo Rigotto (rigottofilippo@altervista.org).
+%% Based on altacv.cls (v1.1.4) written by LianTze Lim (liantze@gmail.com).
+%%
 %% It may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3
 %% of this license or (at your option) any later version.
@@ -9,11 +10,21 @@
 %%    http://www.latex-project.org/lppl.txt
 %% and version 1.3 or later is part of all distributions of LaTeX
 %% version 2003/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%% 
+%% The Current Maintainer of this work is Filippo Rigotto.
+%%
+%% This work consists of the file altercv.sty, other files in the 
+%% distribution are provided as usage samples.
+%%
+%% Changes between original AltaCV and AlterCV versions are grouped
+%% in CHANGELOG.md file.
 %%%%%%%%%%%%%%%%
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-%% v1.4: Detect TL2018 to handle accented characters in class information
+%% v1.1.4: Detect TL2018 to handle accented characters in class information
 \@ifl@t@r\fmtversion{2018/04/01}{\UseRawInputEncoding}{}
-\ProvidesClass{altacv}[2018/07/27 AltaCV v1.1.4, yet another alternative class for a résumé/curriculum vitae.]
+\ProvidesClass{altercv}[2018/08/16 AlterCV v1.0.0, yet another alternative class for a curriculum vitae, derived from AltaCV v1.1.4.]
 
 %% v1.1: Optionally load academicons
 \newif\if@academicons
@@ -41,10 +52,11 @@
 
 \RequirePackage{xcolor}
 
-\colorlet{accent}{blue!70!black}
+\colorlet{accent}{black}
 \colorlet{heading}{black}
 \colorlet{emphasis}{black}
 \colorlet{body}{black!80!white}
+\colorlet{links}{black}
 \newcommand{\itemmarker}{{\small\textbullet}}
 \newcommand{\ratingmarker}{\faCircle}
 
@@ -60,6 +72,23 @@
 \RequirePackage{multirow,tabularx}
 \RequirePackage{changepage}
 % \RequirePackage{marginfix}
+\RequirePackage{microtype}
+\RequirePackage{progressbar}
+\RequirePackage{hyperref}
+
+%% url and links setup
+\urlstyle{same} %% don't change to monospace
+\hypersetup{%
+	pdfpagemode  = UseOutlines,
+	pdfstartview = FitH,
+	colorlinks,
+	linkcolor = black,
+	citecolor = black,
+	urlcolor  = links,
+	pdfencoding	= unicode,
+	pdfproducer = LaTeX,
+	pdfcreator  = pdfLaTeX
+}
 
 \setlength{\parindent}{0pt}
 \newcommand{\divider}{\textcolor{body!30}{\hdashrule{\linewidth}{0.6pt}{0.5ex}}\medskip}
@@ -72,11 +101,22 @@
 \newcommand{\phonesymbol}{\faPhone}
 \newcommand{\homepagesymbol}{\faChain}
 \newcommand{\locationsymbol}{\faMapMarker}
-\newcommand{\linkedinsymbol}{\faLinkedin}
-\newcommand{\twittersymbol}{\faTwitter}
-\newcommand{\githubsymbol}{\faGithub}
-\newcommand{\orcidsymbol}{\aiOrcid}
 \newcommand{\mailsymbol}{\faEnvelope}
+\newcommand{\birthdatesymbol}{\faBirthdayCake}
+\newcommand{\telegramsymbol}{\faTelegram}
+\newcommand{\skypesymbol}{\faSkype}
+\newcommand{\linkedinsymbol}{\faLinkedin}
+\newcommand{\facebooksymbol}{\faFacebook}
+\newcommand{\twittersymbol}{\faTwitter}
+\newcommand{\gplussymbol}{\faGooglePlus}
+\newcommand{\wpsymbol}{\faWordpress}
+\newcommand{\stackosymbol}{\faStackoverflow}
+\newcommand{\youtubesymbol}{\faYoutube}
+\newcommand{\vimeosymbol}{\faVimeo}
+\newcommand{\githubsymbol}{\faGithub}
+\newcommand{\bitbucketsymbol}{\faBitbucket}
+\newcommand{\gitlabsymbol}{\faGitlab}
+\newcommand{\orcidsymbol}{\aiOrcid}
 
 \newcommand{\printinfo}[2]{\mbox{\textcolor{accent}{\normalfont #1}\hspace{0.5em}#2\hspace{2em}}}
 
@@ -84,14 +124,25 @@
 \newcommand{\tagline}[1]{\def\@tagline{#1}}
 \newcommand{\photo}[2]{\def\@photo{#2}\def\@photodiameter{#1}}
 \newcommand{\email}[1]{\printinfo{\emailsymbol}{#1}}
-\newcommand{\mailaddress}[1]{\printinfo{\mailsymbol}{#1}}
 \newcommand{\phone}[1]{\printinfo{\phonesymbol}{#1}}
 \newcommand{\homepage}[1]{\printinfo{\homepagesymbol}{#1}}
-\newcommand{\twitter}[1]{\printinfo{\twittersymbol}{#1}}
-\newcommand{\linkedin}[1]{\printinfo{\linkedinsymbol}{#1}}
-\newcommand{\github}[1]{\printinfo{\githubsymbol}{#1}}
-\newcommand{\orcid}[1]{\printinfo{\orcidsymbol}{#1}}
 \newcommand{\location}[1]{\printinfo{\locationsymbol}{#1}}
+\newcommand{\mailaddress}[1]{\printinfo{\mailsymbol}{#1}}
+\newcommand{\birthday}[1]{\printinfo{\birthdatesymbol}{#1}}
+\newcommand{\telegram}[1]{\printinfo{\telegramsymbol}{#1}}
+\newcommand{\skype}[1]{\printinfo{\skypesymbol}{#1}}
+\newcommand{\linkedin}[1]{\printinfo{\linkedinsymbol}{#1}}
+\newcommand{\facebook}[1]{\printinfo{\facebooksymbol}{#1}}
+\newcommand{\twitter}[1]{\printinfo{\twittersymbol}{#1}}
+\newcommand{\googleplus}[1]{\printinfo{\gplussymbol}{#1}}
+\newcommand{\wordpress}[1]{\printinfo{\wpsymbol}{#1}}
+\newcommand{\stackoverflow}[1]{\printinfo{\stackosymbol}{#1}}
+\newcommand{\youtube}[1]{\printinfo{\youtubesymbol}{#1}}
+\newcommand{\vimeo}[1]{\printinfo{\vimeosymbol}{#1}}
+\newcommand{\github}[1]{\printinfo{\githubsymbol}{#1}}
+\newcommand{\bitbucket}[1]{\printinfo{\bitbucketsymbol}{#1}}
+\newcommand{\gitlab}[1]{\printinfo{\gitlabsymbol}{#1}}
+\newcommand{\orcid}[1]{\printinfo{\orcidsymbol}{#1}}
 
 \newcommand{\personalinfo}[1]{\def\@personalinfo{#1}}
 
@@ -103,7 +154,7 @@
     \medskip
     {\large\bfseries\color{accent}\@tagline\par}
     \medskip
-    {\footnotesize\bfseries\@personalinfo\par}
+    {\small\bfseries\@personalinfo\par}
     \ifdef{\@photodiameter}{%
     \end{minipage}\hfill%
     \begin{minipage}{\@photodiameter}
@@ -134,7 +185,7 @@
 \newcommand{\cvevent}[4]{%
   {\large\color{emphasis}#1\par}
   \smallskip\normalsize
-  \ifstrequal{#2}{}{}{
+  \ifstrequal{#2}{}{}{%
   \textbf{\color{accent}#2}\par
   \smallskip}
   \ifstrequal{#3}{}{}{{\small\makebox[0.5\linewidth][l]{\faCalendar\hspace{0.5em}#3}}}%
@@ -158,6 +209,15 @@
 \textcolor{emphasis}{\textbf{#1}}\hfill
 \foreach \x in {1,...,5}{%
   \space{\ifnumgreater{\x}{#2}{\color{body!30}}{\color{accent}}\ratingmarker}}\par%
+  %\medskip
+}
+
+\newcommand{\cvskillbar}[2]{%
+\textcolor{emphasis}{\textbf{#1}}\hfill
+\progressbar[width=.3\columnwidth,borderwidth=0.1pt,tickswidth=0.1pt,%
+	filledcolor=accent,emptycolor=body!30,%
+  subdivisions=4,roundnessr=0.5]{#2}\par%
+  %\medskip
 }
 
 % Adapted from @Jake's answer at http://tex.stackexchange.com/a/82729/226

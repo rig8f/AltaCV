@@ -1,5 +1,12 @@
+% arara: pdflatex
+% arara: biber
+% arara: pdflatex
+% arara: pdflatex
+
 %%%%%%%%%%%%%%%%%
-% This is an example CV created using altacv.cls (v1.1.4, 27 July 2018) written by
+% This is an example CV created using altercv.cls (v1.0.0, 16 August 2018) written by
+% Filippo Rigotto (rigottofilippo@altervista.org).
+% The class is based on altacv.cls (v1.1.4, 27 July 2018) written by
 % LianTze Lim (liantze@gmail.com), based on the
 % Cv created by BusinessInsider at http://www.businessinsider.my/a-sample-resume-for-marissa-mayer-2016-7/?r=US&IR=T
 %
@@ -21,7 +28,7 @@
 %% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
 % \documentclass[10pt,a4paper,normalphoto]{altacv}
 
-\documentclass[10pt,a4paper]{altacv}
+\documentclass[10pt,a4paper]{altercv}
 
 %% AltaCV uses the fontawesome and academicon fonts
 %% and packages.
@@ -53,6 +60,7 @@
 \colorlet{accent}{VividPurple}
 \colorlet{emphasis}{SlateGrey}
 \colorlet{body}{LightGrey}
+\colorlet{links}{VividPurple}
 
 % Change the bullets for itemize and rating marker
 % for \cvskill if you want to
@@ -61,6 +69,14 @@
 
 %% sample.bib contains your publications
 \addbibresource{sample.bib}
+
+%% additional (personal) PDF metadata
+\hypersetup{%
+	pdfauthor    = {Marissa Mayer},
+	pdftitle     = {CV - Marissa Mayer},
+	pdfsubject   = {Marissa Mayer's CV},
+	pdfkeywords  = {cv,curriculum}
+}
 
 \begin{document}
 \name{Marissa Mayer}
@@ -71,14 +87,16 @@
   % Not all of these are required!
   % You can add your own with \printinfo{symbol}{detail}
   \email{mmayer@yahoo-inc.com}
-%   \phone{000-00-0000}
+% \phone{000-00-0000}
   \mailaddress{Address, Street, 00000 County}
   \location{Sunnyvale, CA}
   \homepage{marissamayr.tumblr.com/}
   \twitter{@marissamayer}
   \linkedin{linkedin.com/in/marissamayer}
-%   \github{github.com/mmayer} % I'm just making this up though.
-%   \orcid{orcid.org/0000-0000-0000-0000} % Obviously making this up too. If you want to use this field (and also other academicons symbols), add "academicons" option to \documentclass{altacv}
+% \github{github.com/mmayer} % I'm just making this up though.
+% \orcid{orcid.org/0000-0000-0000-0000} % Obviously making this up too. If you want to use this field (and also other academicons symbols), add "academicons" option to \documentclass{altacv}
+% Other available commands: \birthday{}, \telegram{} \skype{} \facebook{} \googleplus{}
+% \wordpress{} \stackoverflow{} \youtube{} \vimeo{} \bitbucket{} \gitlab{}
 }
 
 %% Make the header extend all the way to the right, if you want.
