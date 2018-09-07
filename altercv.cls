@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%
-%% altercv.cls (v1.0.0, 16 August 2018) 
+%% altercv.cls (v1.0.1, 07 September 2018) 
 %% Copyright 2018 Filippo Rigotto (rigottofilippo@altervista.org).
 %% Based on altacv.cls (v1.1.4) written by LianTze Lim (liantze@gmail.com).
 %%
@@ -24,7 +24,7 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 %% v1.1.4: Detect TL2018 to handle accented characters in class information
 \@ifl@t@r\fmtversion{2018/04/01}{\UseRawInputEncoding}{}
-\ProvidesClass{altercv}[2018/08/16 AlterCV v1.0.0, yet another alternative class for a curriculum vitae, derived from AltaCV v1.1.4.]
+\ProvidesClass{altercv}[2018/09/07 AlterCV v1.0.1, yet another alternative class for a curriculum vitae, derived from AltaCV v1.1.4.]
 
 %% v1.1: Optionally load academicons
 \newif\if@academicons
@@ -32,6 +32,8 @@
 %% v1.1.3: Choice of round/square photo
 \newif\if@normalphoto
 \DeclareOption{normalphoto}{\@normalphototrue}
+\newif\if@ieeebib
+\DeclareOption{ieeebib}{\@ieeebibtrue}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{extarticle}}
 \ProcessOptions\relax
 
@@ -287,14 +289,18 @@
 
 \newenvironment{cvcolumn}[1]{\begin{minipage}[t]{#1}\raggedright}{\end{minipage}}
 
-\RequirePackage[backend=biber,style=authoryear,sorting=ydnt]{biblatex}
-%% For removing numbering entirely when using a numeric style
-% \setlength{\bibhang}{1em}
-% \DeclareFieldFormat{labelnumberwidth}{\makebox[\bibhang][l]{\itemmarker}}
-% \setlength{\biblabelsep}{0pt}
+\if@ieeebib
+  \RequirePackage[backend=biber,style=ieee,sorting=ydnt]{biblatex}
+  %% For removing numbering entirely when using a numeric style
+  \setlength{\bibhang}{1em}
+  \DeclareFieldFormat{labelnumberwidth}{\makebox[\bibhang][l]{\itemmarker}}
+  \setlength{\biblabelsep}{0pt}
+\else
+  \RequirePackage[backend=biber,style=authoryear,maxbibnames=10,sorting=ydnt]{biblatex}
+  \AtEveryBibitem{\makebox[\bibhang][l]{\itemmarker}}
+\fi
 \defbibheading{pubtype}{\cvsubsection{#1}}
 \renewcommand{\bibsetup}{\vspace*{-\baselineskip}}
-\AtEveryBibitem{\makebox[\bibhang][l]{\itemmarker}}
 \setlength{\bibitemsep}{0.25\baselineskip}
 
 % v1.1.2: make it easier to add a sidebar aligned with top of next page

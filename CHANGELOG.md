@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.1 (2018/09/07)
+
+- Added `ieeebib` option to display bibliography in IEEE style
+- Set max author number to 10 for bibliography (useful if not among first authors)
+- Added Makefile
+
 ## v1.0.0 (2018/08/16)
 
 This version is based on AltaCV v1.1.4 (commit [`965cea1`](https://github.com/liantze/AltaCV/commit/965cea18932a1792817e89766bfef6e32d6c21be)).
