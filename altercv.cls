@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%
-%% altercv.cls (v1.0.1, 07 September 2018) 
+%% altercv.cls (v1.0.2, 13 March 2019) 
 %% Copyright 2018 Filippo Rigotto (rigottofilippo@altervista.org).
 %% Based on altacv.cls (v1.1.4) written by LianTze Lim (liantze@gmail.com).
 %%
@@ -24,7 +24,7 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 %% v1.1.4: Detect TL2018 to handle accented characters in class information
 \@ifl@t@r\fmtversion{2018/04/01}{\UseRawInputEncoding}{}
-\ProvidesClass{altercv}[2018/09/07 AlterCV v1.0.1, yet another alternative class for a curriculum vitae, derived from AltaCV v1.1.4.]
+\ProvidesClass{altercv}[2019/03/13 AlterCV v1.0.2, yet another alternative class for a curriculum vitae, derived from AltaCV v1.1.4.]
 
 %% v1.1: Optionally load academicons
 \newif\if@academicons
