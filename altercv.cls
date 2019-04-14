@@ -105,7 +105,7 @@
 \newcommand{\locationsymbol}{\faMapMarker}
 \newcommand{\mailsymbol}{\faEnvelope}
 \newcommand{\birthdatesymbol}{\faBirthdayCake}
-\newcommand{\telegramsymbol}{\faSendO}
+\newcommand{\telegramsymbol}{\faSend}
 \newcommand{\skypesymbol}{\faSkype}
 \newcommand{\linkedinsymbol}{\faLinkedin}
 \newcommand{\facebooksymbol}{\faFacebook}
